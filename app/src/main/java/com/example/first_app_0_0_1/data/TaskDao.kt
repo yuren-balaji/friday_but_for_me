@@ -1,0 +1,21 @@
+package com.example.first_app_0_0_1.data
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
+
+@Dao
+interface TaskDao {
+    @Query("SELECT * FROM tasks ORDER BY timestamp DESC")
+    fun getAllTasks(): Flow<List<Task>>
+
+    @Insert
+    suspend fun insertTask(task: Task)
+
+    @Update
+    suspend fun updateTask(task: Task)
+
+    // Add more operations as needed
+}
