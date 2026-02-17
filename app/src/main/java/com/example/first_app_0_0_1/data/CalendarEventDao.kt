@@ -1,6 +1,7 @@
 package com.example.first_app_0_0_1.data
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
@@ -13,5 +14,6 @@ interface CalendarEventDao {
     @Insert
     suspend fun insertEvent(event: CalendarEvent)
 
-    // Add more operations as needed
+    @Delete
+    suspend fun deleteEvent(event: CalendarEvent)
 }

@@ -1,6 +1,7 @@
 package com.example.first_app_0_0_1.data
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -17,5 +18,6 @@ interface TaskDao {
     @Update
     suspend fun updateTask(task: Task)
 
-    // Add more operations as needed
+    @Delete
+    suspend fun deleteTask(task: Task)
 }
