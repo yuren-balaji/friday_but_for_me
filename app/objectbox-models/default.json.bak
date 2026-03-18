@@ -1,0 +1,49 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:8365916067271459025",
+      "lastPropertyId": "4:2908906671604387424",
+      "name": "NoteVector",
+      "properties": [
+        {
+          "id": "1:6199543688113752533",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:959905973222989219",
+          "name": "noteId",
+          "type": 6
+        },
+        {
+          "id": "3:6325588824753786739",
+          "name": "embedding",
+          "indexId": "1:553666746044091285",
+          "type": 28,
+          "flags": 8
+        },
+        {
+          "id": "4:2908906671604387424",
+          "name": "contentSnippet",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:8365916067271459025",
+  "lastIndexId": "1:553666746044091285",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
