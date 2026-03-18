@@ -11,6 +11,9 @@ interface CalendarEventDao {
     @Query("SELECT * FROM calendar_events ORDER BY startTime ASC")
     fun getAllEvents(): Flow<List<CalendarEvent>>
 
+    @Query("SELECT * FROM calendar_events WHERE title = :title")
+    suspend fun findEventsByTitle(title: String): List<CalendarEvent>
+
     @Insert
     suspend fun insertEvent(event: CalendarEvent)
 

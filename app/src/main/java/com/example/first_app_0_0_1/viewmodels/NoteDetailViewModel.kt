@@ -31,6 +31,19 @@ class NoteDetailViewModel(private val noteDao: NoteDao, private val noteId: Stri
             }
         }
     }
+
+    fun findOrCreateNoteByTitle(title: String, onNoteFound: (String) -> Unit) {
+        viewModelScope.launch {
+            val existingNote = noteDao.findNoteByTitle(title)
+            if (existingNote != null) {
+                onNoteFound(existingNote.id)
+            } else {
+                val newNote = Note(title = title, content = "")
+                noteDao.insertNote(newNote)
+                onNoteFound(newNote.id)
+            }
+        }
+    }
 }
 
 class NoteDetailViewModelFactory(private val noteDao: NoteDao, private val noteId: String) : ViewModelProvider.Factory {

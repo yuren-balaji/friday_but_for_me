@@ -11,5 +11,11 @@ data class Task(
     val title: String,
     val description: String,
     val timestamp: Long = System.currentTimeMillis(),
-    var isCompleted: Boolean = false
+    val dueDate: Long = System.currentTimeMillis(),
+    var isCompleted: Boolean = false,
+    val priority: Int = 0, // 0: Low, 1: Medium, 2: High
+    val category: String? = null,
+    val tags: String? = null, // Comma separated tags
+    val reminderTime: Long? = null,
+    val createdAt: Long = System.currentTimeMillis()
 )

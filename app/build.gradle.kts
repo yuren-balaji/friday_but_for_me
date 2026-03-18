@@ -1,8 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
     id("org.jetbrains.kotlin.plugin.compose")
+    id("com.google.devtools.ksp")
+    id("io.objectbox")
 }
 
 android {
@@ -41,14 +42,17 @@ android {
     buildFeatures {
         compose = true
     }
-    //composeOptions {
-      //  kotlinCompilerExtensionVersion = "1.5.12"
-    //}
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+// ObjectBox plugin adds objectbox-android to implementation by default.
+// This causes duplicate class issues when also using the objectbrowser.
+configurations.all {
+    exclude(group = "io.objectbox", module = "objectbox-android")
 }
 
 dependencies {
@@ -71,6 +75,9 @@ dependencies {
     implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.3.1")
     implementation("androidx.navigation:navigation-compose:2.8.5")
 
+    // WorkManager for background automations
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
+
     // Testing Dependencies
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -85,4 +92,19 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
+
+    // ObjectBox Vector Search
+    // We manually add the correct dependency for each build type to avoid duplication.
+    debugImplementation("io.objectbox:objectbox-android-objectbrowser:4.0.3")
+    releaseImplementation("io.objectbox:objectbox-android:4.0.3")
+
+    // TensorFlow Lite
+    implementation("org.tensorflow:tensorflow-lite-task-text:0.4.3")
+    implementation("org.tensorflow:tensorflow-lite-task-audio:0.4.3")
+
+    // JSON Serialization
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    // Encryption for external storage
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
 }

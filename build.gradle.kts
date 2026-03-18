@@ -5,5 +5,5 @@ plugins {
 
     // KSP version for Kotlin 2.1.0
     id("com.google.devtools.ksp") version "2.1.0-1.0.29" apply false
-
+    id("io.objectbox") version "4.0.3" apply false
 }

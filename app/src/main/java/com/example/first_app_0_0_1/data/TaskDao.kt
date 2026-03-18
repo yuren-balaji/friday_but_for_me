@@ -12,6 +12,9 @@ interface TaskDao {
     @Query("SELECT * FROM tasks ORDER BY timestamp DESC")
     fun getAllTasks(): Flow<List<Task>>
 
+    @Query("SELECT * FROM tasks WHERE title = :title")
+    suspend fun findTasksByTitle(title: String): List<Task>
+
     @Insert
     suspend fun insertTask(task: Task)
 

@@ -15,6 +15,12 @@ interface NoteDao {
     @Query("SELECT * FROM notes WHERE id = :noteId")
     fun getNoteById(noteId: String): Flow<Note?>
 
+    @Query("SELECT * FROM notes WHERE title = :title LIMIT 1")
+    suspend fun findNoteByTitle(title: String): Note?
+
+    @Query("SELECT * FROM notes WHERE title LIKE '%' || :title || '%'")
+    suspend fun findNotesByTitle(title: String): List<Note>
+
     @Insert
     suspend fun insertNote(note: Note)
 

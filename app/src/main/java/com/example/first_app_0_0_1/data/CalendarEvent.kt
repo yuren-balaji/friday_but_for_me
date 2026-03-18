@@ -12,6 +12,6 @@ data class CalendarEvent(
     val description: String,
     val startTime: Long,
     val endTime: Long,
-    val allDay: Boolean = false,
+    val isAllDay: Boolean = false,
     val location: String? = null
 )
